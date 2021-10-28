@@ -1,0 +1,18 @@
+//Define Groovy Utils and holder 
+def groovyUtils = new com.eviware.soapui.support.GroovyUtils(context)
+def holder = groovyUtils.getXmlHolder(messageExchange.responseContent)
+ 
+//Define the NameSpace
+holder.namespaces["ns1"] = "http://tempuri.org/"
+ 
+//Get the 'AddResult' Node and assign to a variable
+def addResult = holder.getNodeValue("//ns1:AddResult")
+ 
+//print the  result 
+log.info "The result value for integers is " + addResult
+ 
+//Comparing the value to print 'Pass' or 'Fail'
+if(addResult=="48")
+{ log.info "Pass" }
+else
+{ log.info "fail"}
